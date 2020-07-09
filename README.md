@@ -18,13 +18,13 @@ pip3 install -r requirements.txt
 
 
 ## Download Data
-1. Using Medical Masks Dataset (https://www.kaggle.com/vtech6/medical-masks-dataset), comes from Eden Social Welfare Foundation which contains the pictures of people wearing medical masks along with the labels containing their descriptions
-
-2. Download images and labels, transforming .xml to a .csv file, with header row 'filename', 'label', 'xmax', 'xmin', 'ymax', 'ymin'.
-   For example:
-   | filename | label | xmax | xmin | ymax | ymin |
-   | -------- | :---: | :--: | :--: | :--: | :--: |
-   |c1\_1844849.jpg|good|1246|127|1312|227|
-   |c1\_1844849.jpg|none|745|889|862|999|
+1. Using COVID-19 Data from 
+CSSEGISandData (https://github.com/CSSEGISandData/
+COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv), which contains global daily comfirmed number of COVID-19.
    
-3. Split data for train and test, name the file as train.csv / test.csv.
+2. We only utilize the Country/Region-wise data, so integrate the Province/State-wise data into same row. i.e. each Country/Region occupy only one row.
+   For example:
+   | Country/Rigion | Lat | Long | date1 | date2 | date3 | ... |
+   | -------- | :---: | :--: | :--: | :--: | :--: | :--: |
+   |Afghanistan|33.0|65.0|0|0|0| |
+   |Albania|41.1533|20.1683|0|0|0| |
