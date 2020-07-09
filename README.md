@@ -38,20 +38,52 @@ COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_co
 python3 preprocess.py
 ```
 
-3.  修改cnn.py中的config
+3.  修改config/config.py中的config
 ```python
 # CONFIG
+class RNNConfig:
+    model_type = 'LSTM' 
+    input_dim = 1
+    hidden_dim = 32
+    layer_dim = 1
+    dropout = 0
+    
 class TrainConfig
-output_dir = 'AlexNet_is32_bs256_ep300_loss'
-if not os.path.isdir('CNN_model/'+output_dir):
-    os.mkdir('CNN_model/'+output_dir)
-logger = SummaryWriter('CNN_log/'+output_dir)
-
-epochs = 500
-bch_size = 256
-lr = 0.001
-imgSize = 32
-save_freq = 50
-istrain = True
-modelPath = 'AlexNet_is32_bs256_ep300_loss+w/ep250.pkl'
+    isTrain = False
+    interval = 10
+    thres = 0
 ```
+## configuration
+- **model_type** - RNN type (RNN / LSTM / GRU).
+- **input_dim** - RNN input dimension.
+- **hidden_dim** - RNN hidden dimension.
+- **layer_dim** - RNN layer number.
+- **dropout** - dropout for each RNN layer (work when layer_dim > 1)
+- **isTrain** - if the model do train or test
+- **interval** - the length of the input sequence, i.e 用多長的天數去預測隔天的趨勢
+- **thres** - threshold to filter the country. (跟preprocess.py中的threshold一致)
+
+3.  run main.py
+```
+python3 main.py
+```
+
+### tensorboardX
+可以使用tensorboard觀察loss及accuracy變化
+```
+tensorboard --logdir log
+```
+
+## Testing
+1. 修改istrain及ckpt
+```python
+class TrainConfig:
+   isTrain = False
+   ckpt = 'LSTM|L-10|bs-500|in-1|layer-1|hid-32|th-0|Adam lr-0.001'
+   epoch = 500
+```
+2. run main.py, get global trend map for each country.
+```
+python3 main.py
+```
+
