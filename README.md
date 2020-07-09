@@ -86,4 +86,4 @@ class TrainConfig:
 ```
 python3 main.py
 ```
-![Covid-19 trend](Covid-19\ trend.png)
+![Covid-19 trend](https://github.com/hsiaohan0827/RNN-for-COVID-19-trend-prediction/blob/master/Covid-19%20trend.png)
