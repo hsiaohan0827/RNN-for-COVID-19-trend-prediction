@@ -86,4 +86,4 @@ class TrainConfig:
 ```
 python3 main.py
 ```
-
+![Covid-19 trend](Covid-19\ trend.png)
