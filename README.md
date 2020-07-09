@@ -28,3 +28,30 @@ COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_co
    | -------- | :---: | :--: | :--: | :--: | :--: | :--: |
    |Afghanistan|33.0|65.0|0|0|0| |
    |Albania|41.1533|20.1683|0|0|0| |
+
+
+## Training
+1. set correlation coefficient threshold in line 50 to filter the country data.
+
+2.  run preprocess.py for making daily difference sequence as input.  
+```
+python3 preprocess.py
+```
+
+3.  修改cnn.py中的config
+```python
+# CONFIG
+class TrainConfig
+output_dir = 'AlexNet_is32_bs256_ep300_loss'
+if not os.path.isdir('CNN_model/'+output_dir):
+    os.mkdir('CNN_model/'+output_dir)
+logger = SummaryWriter('CNN_log/'+output_dir)
+
+epochs = 500
+bch_size = 256
+lr = 0.001
+imgSize = 32
+save_freq = 50
+istrain = True
+modelPath = 'AlexNet_is32_bs256_ep300_loss+w/ep250.pkl'
+```
