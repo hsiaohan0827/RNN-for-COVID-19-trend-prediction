@@ -41,7 +41,7 @@ mlxtend==0.17.2
 multiprocess==0.70.9
 netifaces==0.10.4
 numba==0.48.0
-numpy==1.18.4
+numpy==1.22.0
 oauth==1.0.1
 olefile==0.45.1
 opencv-python==4.2.0.34
